@@ -1,0 +1,25 @@
+name: Create General performance Infrastructure
+on: push
+permissions:
+    id-token: write
+    contents: read 
+jobs:
+    deploy-infra:
+        runs-on: ubuntu-latest
+        steps:
+            - name: init terraform
+              uses: actions/checkout@v4
+            - name: "Configure AWS Credentials"
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                aws-region: us-east-1
+                role-session-name: samplerolesession
+                role-to-assume: arn:aws:iam::400793929034:role/general-performance-role-githubactions
+            - name: Init
+              run: terraform init
+            - name: fmt terraform
+              run: terraform fmt
+            - name: validate terraform
+              run: terraform validate
+            - name: plan terraform
+              run: terraform plan --var-file prod.tfvars

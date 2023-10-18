@@ -2,10 +2,9 @@ terraform {
   required_version = "~>1.5.7"
 
   backend "s3" {
-    bucket  = "npdterraformbackend"
-    key     = "banesco_performance_produccion__2/terraform.state"
+    bucket  = "generalinfrastructure"
+    key     = "infra/terraform.state"
     region  = "us-east-1"
-    profile = "default"
   }
 
   required_providers {
@@ -18,7 +17,6 @@ terraform {
 
 provider "aws" {
   region  = "us-east-1"
-  profile = "default"
 }
 
 # AWS Security Group
@@ -26,27 +24,11 @@ resource "aws_security_group" "sg_instances_performance" {
   name = "Allow ssh from my ip"
 
   ingress {
-    description = "SSH from my computer"
+    description = "All connections from my Computer"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["190.140.218.0/24"]
-  }
-
-  ingress {
-    description = "SSH from my computer"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["190.140.218.0/24"]
-  }
-
-  ingress {
-    description = "SSH from my computer"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["54.211.163.0/24"]
   }
 
   egress {
