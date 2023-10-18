@@ -23,3 +23,5 @@ jobs:
               run: terraform validate
             - name: plan terraform
               run: terraform plan --var-file prod.tfvars
+            - name: apply terraform
+              run: terraform apply --var-file prod.tfvars --auto-approve

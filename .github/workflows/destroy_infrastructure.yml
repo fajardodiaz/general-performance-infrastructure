@@ -1,0 +1,19 @@
+name: Create General performance Infrastructure
+on: workflow_dispatch
+permissions:
+    id-token: write
+    contents: read 
+jobs:
+    deploy-infra:
+        runs-on: ubuntu-latest
+        steps:
+            - name: init terraform
+              uses: actions/checkout@v4
+            - name: "Configure AWS Credentials"
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                aws-region: us-east-1
+                role-session-name: samplerolesession
+                role-to-assume: arn:aws:iam::400793929034:role/general-performance-role-githubactions
+            - name: destroy infrastructure
+              run: terraform destroy --var-file prod.tfvars
