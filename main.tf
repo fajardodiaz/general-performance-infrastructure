@@ -28,7 +28,7 @@ resource "aws_security_group" "sg_instances_performance" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["190.140.218.0/24"]
+    cidr_blocks = ["186.188.216.0/24"]
   }
 
   egress {
