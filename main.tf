@@ -98,7 +98,7 @@ resource "aws_security_group" "allow_master_instance" {
     from_port   = 0
     to_port     = 0
     protocol    = -1
-    cidr_blocks = ["${aws_instance.master_instance[0].public_ip}/32"]
+    cidr_blocks = ["${aws_instance.master_instance.public_ip}/32"]
   }
 
   tags = {
