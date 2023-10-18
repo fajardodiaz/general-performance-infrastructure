@@ -1,4 +1,4 @@
-name: Create General performance Infrastructure
+name: Destroy Terraform infrastructure
 on: workflow_dispatch
 permissions:
     id-token: write
@@ -15,5 +15,7 @@ jobs:
                 aws-region: us-east-1
                 role-session-name: samplerolesession
                 role-to-assume: arn:aws:iam::400793929034:role/general-performance-role-githubactions
+            - name: Init
+              run: terraform init
             - name: destroy infrastructure
-              run: terraform destroy --var-file prod.tfvars
+              run: terraform destroy --var-file prod.tfvars --auto-approve

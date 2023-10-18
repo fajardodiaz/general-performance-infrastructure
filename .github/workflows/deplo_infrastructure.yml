@@ -1,5 +1,5 @@
 name: Create General performance Infrastructure
-on: push
+on: workflow_dispatch
 permissions:
     id-token: write
     contents: read 
