@@ -3,8 +3,8 @@ terraform {
 
   backend "s3" {
     bucket  = "generalinfrastructure"
-    key     = "infra/terraform.state"
-    region  = "us-east-1"
+    key     = "infra/copaloyal/terraform.state"
+    region  = "us-east-2"
   }
 
   required_providers {
@@ -16,7 +16,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-east-1"
+  region  = "us-east-2"
 }
 
 # AWS Security Group
@@ -28,7 +28,7 @@ resource "aws_security_group" "sg_instances_performance" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["186.188.216.0/24"]
+    cidr_blocks = ["190.141.90.0/24"]
   }
 
   egress {
