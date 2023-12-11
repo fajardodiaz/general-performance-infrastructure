@@ -42,7 +42,7 @@ resource "aws_security_group" "sg_instances_performance" {
 # AWS Elastic IP
 resource "aws_eip_association" "eip_association" {
   instance_id   = aws_instance.master_instance.id
-  allocation_id = "eipalloc-05c10ca40a0fefcd5"
+  allocation_id = "eipalloc-0e356a116535f7020"
   depends_on    = [aws_instance.master_instance]
 }
 
