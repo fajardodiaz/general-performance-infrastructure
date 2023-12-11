@@ -101,6 +101,13 @@ resource "aws_security_group" "allow_master_instance" {
     cidr_blocks = ["${aws_instance.master_instance.public_ip}/32"]
   }
 
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = {
     Name = "Master Instance permissions"
   }
