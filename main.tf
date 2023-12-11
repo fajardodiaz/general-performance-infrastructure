@@ -4,7 +4,7 @@ terraform {
   backend "s3" {
     bucket  = "generalinfrastructure"
     key     = "infra/copaloyal/terraform.state"
-    region  = "us-east-2"
+    region  = "us-east-1"
   }
 
   required_providers {
