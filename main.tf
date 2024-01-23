@@ -28,7 +28,7 @@ resource "aws_security_group" "sg_instances_performance" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["190.141.90.0/24"]
+    cidr_blocks = ["190.141.89.0/24"]
   }
 
   egress {
@@ -42,7 +42,7 @@ resource "aws_security_group" "sg_instances_performance" {
 # AWS Elastic IP
 resource "aws_eip_association" "eip_association" {
   instance_id   = aws_instance.master_instance.id
-  allocation_id = "eipalloc-0e356a116535f7020"
+  allocation_id = "eipalloc-09439b0f7fea89f4c"
   depends_on    = [aws_instance.master_instance]
 }
 
