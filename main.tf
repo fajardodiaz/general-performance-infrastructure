@@ -24,11 +24,11 @@ resource "aws_security_group" "sg_instances_performance" {
   name = "Allow ssh from my ip"
 
   ingress {
-    description = "All connections from my Computer"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["190.141.89.0/24"]
+    description = "SSH Access"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -38,14 +38,6 @@ resource "aws_security_group" "sg_instances_performance" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-# AWS Elastic IP
-resource "aws_eip_association" "eip_association" {
-  instance_id   = aws_instance.master_instance.id
-  allocation_id = "eipalloc-09439b0f7fea89f4c"
-  depends_on    = [aws_instance.master_instance]
-}
-
 
 # AWS Instances
 resource "aws_instance" "master_instance" {

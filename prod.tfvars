@@ -1,8 +1,8 @@
 master_instance_type  = "c5.xlarge"
 slave_instance_type   = "c5.2xlarge"
 master_instance_count = 1
-slave_instance_count  = 5
-ami                   = "ami-0b8b44ec9a8f90422"
+slave_instance_count  = 4
+ami                   = "ami-0f30a9c3a48f3fa79"
 availability_zone     = "us-east-2a"
 key_name              = "AutomatizacionDevOpsOhio"
 volume_size           = 75
